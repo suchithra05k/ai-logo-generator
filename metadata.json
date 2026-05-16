@@ -1,0 +1,6 @@
+{
+  "name": "ArchiLogo",
+  "description": "AI-powered logo designer that creates and animates professional SVG logos based on your company story.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

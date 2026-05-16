@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Anton", sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  
+  --color-brand-black: #141414;
+  --color-brand-white: #fafafa;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;900&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap');
+
+@layer base {
+  body {
+    @apply bg-brand-white text-brand-black;
+  }
+}
+
+@layer utilities {
+  .logo-animate svg {
+    animation: entrance var(--anim-duration, 1.2s) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Fade In Preset */
+  .preset-fade-in * {
+    animation-name: fade-in !important;
+    animation-duration: var(--anim-duration, 1s) !important;
+    animation-timing-function: ease-out !important;
+    animation-fill-mode: both !important;
+  }
+
+  /* Scale Up Preset */
+  .preset-scale-up * {
+    animation-name: scale-up !important;
+    animation-duration: var(--anim-duration, 1s) !important;
+    animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    animation-fill-mode: both !important;
+  }
+
+  /* Bounce Preset */
+  .preset-bounce * {
+    animation-name: bounce !important;
+    animation-duration: var(--anim-duration, 1s) !important;
+    animation-timing-function: ease !important;
+    animation-fill-mode: both !important;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scale-up {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-30px);}
+    60% {transform: translateY(-15px);}
+  }
+
+  @keyframes entrance {
+    0% {
+      opacity: 0;
+      transform: scale(0.7) translateY(40px);
+      filter: blur(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-8px) rotate(1deg); }
+    66% { transform: translateY(4px) rotate(-1deg); }
+  }
+
+  .logo-animate *:nth-child(1) { animation-delay: calc(var(--anim-stagger, 0.1s) * 1); }
+  .logo-animate *:nth-child(2) { animation-delay: calc(var(--anim-stagger, 0.1s) * 2); }
+  .logo-animate *:nth-child(3) { animation-delay: calc(var(--anim-stagger, 0.1s) * 3); }
+  .logo-animate *:nth-child(4) { animation-delay: calc(var(--anim-stagger, 0.1s) * 4); }
+  .logo-animate *:nth-child(5) { animation-delay: calc(var(--anim-stagger, 0.1s) * 5); }
+
+  .logo-animate.paused,
+  .logo-animate.paused * {
+    animation-play-state: paused !important;
+  }
+}
